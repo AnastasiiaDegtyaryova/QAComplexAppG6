@@ -64,7 +64,7 @@ class TestStartPage:
         self.log.info("User was registered")
         sleep(1)
 
-        # Verify error text
+        # Verify Error text
 
         assert driver.find_element(by=By.XPATH,
                                    value=".//*[contains(text(),'You must provide a valid email address.')]").text == 'You must provide a valid email address.'

@@ -63,7 +63,7 @@ class TestStartPage:
         self.log.info("User was registered")
         sleep(1)
 
-        # Verify error text
+        # Verify Error text
 
         assert driver.find_element(by=By.XPATH,
                                    value=".//*[contains(text(),'Username must be at least 3 characters.')]").text == "Username must be at least 3 characters."
