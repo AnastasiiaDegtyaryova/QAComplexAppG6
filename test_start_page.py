@@ -251,7 +251,7 @@ class TestStartPage:
                                    value=".//*[contains(text(),'You must provide a valid email address.')]").text == 'You must provide a valid email address.'
         self.log.info("Registration for user '%s' was  not success and verified", username_value)
 
-    def test_register(self):
+    def test_register_inval_password(self):
         """
         - Pre-conditions:
             - Open start page
