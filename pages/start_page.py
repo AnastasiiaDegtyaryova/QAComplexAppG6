@@ -13,8 +13,8 @@ class StartPage(BasePage):
     def sign_in(self, username, password):
         """Sign in as the user"""
         # Fill login
-        self.fill_field(xpath=self.costants.SIGN_IN_USERNAME_FIELD_XPATH, value=username)
-        self.fill_field(xpath=self.costants.SIGN_IN_PASSWORD_FIELD_XPATH, value=password)
+        self.fill_field(xpath=self.constants.SIGN_IN_USERNAME_FIELD_XPATH, value=username)
+        self.fill_field(xpath=self.constants.SIGN_IN_PASSWORD_FIELD_XPATH, value=password)
         sleep(1)
 
         # Click button
@@ -29,9 +29,9 @@ class StartPage(BasePage):
     def sign_up(self, username, email, password):
         """Sign up as the user"""
         # Fill username
-        self.fill_field(xpath=self.costants.SIGN_UP_USERNAME_FIELD_XPATH, value=username)
-        self.fill_field(xpath=self.costants.SIGN_UP_EMAIL_FIELD_XPATH, value=email)
-        self.fill_field(xpath=self.costants.SIGN_UP_PASSWORD_FIELD_XPATH, value=password)
+        self.fill_field(xpath=self.constants.SIGN_UP_USERNAME_FIELD_XPATH, value=username)
+        self.fill_field(xpath=self.constants.SIGN_UP_EMAIL_FIELD_XPATH, value=email)
+        self.fill_field(xpath=self.constants.SIGN_UP_PASSWORD_FIELD_XPATH, value=password)
         sleep(1)
         # Click button
         self.click(xpath=self.constants.SIGN_UP_BUTTON_XPATH)

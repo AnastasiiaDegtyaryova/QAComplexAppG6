@@ -16,6 +16,7 @@ class TestStartPage:
         # Pre-conditions
         driver = webdriver.Chrome(DRIVER_PATH)
         driver.get(BASE_URL)
+        driver.implicitly_wait(1)
         # Steps
         yield StartPage(driver)
         # Post-conditions
