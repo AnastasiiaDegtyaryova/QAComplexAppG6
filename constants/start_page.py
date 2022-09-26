@@ -18,7 +18,7 @@ class StartPageConstants:
     SIGN_UP_PASSWORD_ERROR_XPATH = ".//*[contains(text(),'Password must be at least 12 characters.')]"
     SIGN_UP_PASSWORD_ERROR_TEXT = "Password must be at least 12 characters."
 
-    # TODO: this is actually next page
-    HELLO_MESSAGE_XPATH = ".//h2"
-    HELLO_MESSAGE_USERNAME_XPATH = ".//strong"
-    HELLO_MESSAGE_TEXT = "Hello {username}, your feed is empty."
+    # # TODO: this is actually next page
+    # HELLO_MESSAGE_XPATH = ".//h2"
+    # HELLO_MESSAGE_USERNAME_XPATH = ".//strong"
+    # HELLO_MESSAGE_TEXT = "Hello {username}, your feed is empty."

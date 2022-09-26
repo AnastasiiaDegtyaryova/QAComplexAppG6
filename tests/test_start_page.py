@@ -77,11 +77,11 @@ class TestStartPage:
         password_value = f"{random_str(6)}{random_num()}"
 
         # Sign Up as a user
-        start_page.sign_up(username_value, email_value, password_value)
+        hello_page = start_page.sign_up_and_verify(username_value, email_value, password_value)
         self.log.info("Signed Up as user %s", username_value)
 
         # Verify success message
-        start_page.verify_success_sign_up(username_value)
+        hello_page.verify_success_sign_up(username_value)
         self.log.info("Hello message was verified")
 
     def test_register_inval_username(self, start_page):
