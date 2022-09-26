@@ -4,3 +4,6 @@ class CreatePostPageConsts:
     CREATE_POST_BUTTON_XPATH = ".//button[@class='btn btn-primary']"
     SUCCESS_MESSAGE_XPATH = ".//div[@class='alert alert-success text-center']"
     SUCCESS_MESSAGE_TEXT = "New post successfully created."
+
+    SUCCESS_UPDATE_MESSAGE_XPATH = ".//div[@class='alert alert-success text-center']"
+    SUCCESS_UPDATE_MESSAGE_TEXT = "Post successfully updated."
