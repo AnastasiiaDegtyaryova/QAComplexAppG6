@@ -21,3 +21,12 @@ class NewCreatedPostConstants(BasePage):
         """Verify success message editing"""
         assert self.get_element_text(xpath=self.constants.SUCCESS_UPDATE_MESSAGE_XPATH) == self.constants.SUCCESS_UPDATE_MESSAGE_TEXT, \
             f"Actual: {self.get_element_text(xpath=self.constants.SUCCESS_UPDATE_MESSAGE_XPATH)}"
+
+    def trash_post(self, title, body):
+        """Edit post using provided values"""
+        self.click(xpath=self.constants.TRASH_POST_BUTTON_XPATH)
+
+    def verify_successfully_trashed(self):
+        """Verify success message editing"""
+        assert self.get_element_text(xpath=self.constants.SUCCESS_TRASH_MESSAGE_XPATH) == self.constants.SUCCESS_TRASH_MESSAGE_TEXT, \
+            f"Actual: {self.get_element_text(xpath=self.constants.SUCCESS_TRASH_MESSAGE_XPATH)}"
