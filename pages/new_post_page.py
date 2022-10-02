@@ -1,12 +1,12 @@
-from constants.new_created_post_page import NewCreatedPostConstants
+from constants.new_post_page import NewPostConstants
 from pages.base_page import BasePage
 
 
-class NewCreatedPostConstants(BasePage):
+class NewPost(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.constants = NewCreatedPostConstants()
+        self.constants = NewPostConstants()
         from pages.header import Header
         self.header = Header(self.driver)
 
@@ -22,7 +22,7 @@ class NewCreatedPostConstants(BasePage):
         assert self.get_element_text(xpath=self.constants.SUCCESS_UPDATE_MESSAGE_XPATH) == self.constants.SUCCESS_UPDATE_MESSAGE_TEXT, \
             f"Actual: {self.get_element_text(xpath=self.constants.SUCCESS_UPDATE_MESSAGE_XPATH)}"
 
-    def trash_post(self, title, body):
+    def trash_post(self):
         """Edit post using provided values"""
         self.click(xpath=self.constants.TRASH_POST_BUTTON_XPATH)
 
@@ -30,3 +30,4 @@ class NewCreatedPostConstants(BasePage):
         """Verify success message editing"""
         assert self.get_element_text(xpath=self.constants.SUCCESS_TRASH_MESSAGE_XPATH) == self.constants.SUCCESS_TRASH_MESSAGE_TEXT, \
             f"Actual: {self.get_element_text(xpath=self.constants.SUCCESS_TRASH_MESSAGE_XPATH)}"
+

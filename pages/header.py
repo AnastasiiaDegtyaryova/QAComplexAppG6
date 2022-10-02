@@ -13,3 +13,8 @@ class Header(BasePage):
         self.click(self.constants.CREATE_POST_BUTTON_XPATH)
         from pages.create_post_page import CreatePostPage
         return CreatePostPage(self.driver)
+
+    def open_chat_page(self):
+        self.click(xpath=self.constants.CHAT_XPATH)
+        from pages.chat_page import ChatPage
+        return ChatPage(self.driver)

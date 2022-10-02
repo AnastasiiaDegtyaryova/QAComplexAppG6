@@ -5,12 +5,13 @@ import pytest
 from selenium import webdriver
 
 from constants.base import DRIVER_PATH, BASE_URL
+from pages import new_post_page
 from pages.start_page import StartPage
 from pages.utils import random_str, random_num
 
 
-class TestNewCreatedPostPage:
-    log = logging.getLogger("[CreatePostPage]")
+class TestNewPostPage:
+    log = logging.getLogger("[NewPostPage]")
 
     @pytest.fixture(scope="function")
     def start_page(self):
@@ -32,15 +33,9 @@ class TestNewCreatedPostPage:
         password_value = f"{random_str(6)}{random_num()}"
         return start_page.sign_up_and_verify(username_value, email_value, password_value)
 
+    @pytest.fixture()
     def test_create_post_page(self, hello_page):
-        """
-        - Pre-conditions:
-            - Sign Up/Sign In as an user
-        - Steps:
-            - Navigate to create Post Page
-            - Create Post
-            - Verify the result
-        """
+        """Sign In as the user and Create Post"""
         # Navigate to create Post Page
         create_post_page = hello_page.header.navigate_to_create_post_page()
         self.log.info("Moved to Create Post Page")
@@ -49,18 +44,7 @@ class TestNewCreatedPostPage:
         create_post_page.create_post(title=random_str(15), body=random_str(150))
         self.log.info("Post created")
 
-        # Verify the result
-        create_post_page.verify_successfully_created()
-        self.log.info("Message was verified")
-
-    @pytest.fixture()
-    def create_post(self, hello_page):
-        """Create post and return the page"""
-        create_post_page = hello_page.header.navigate_to_create_post_page()
-        create_post_page.create_post(title=random_str(15), body=random_str(150))
-        return create_post_page.verify_successfully_created()
-
-    def test_edit_post_page(self, new_created_post_page):
+    def test_edit_post_page(self, test_create_post_page):
         """
         - Pre-conditions:
             - Sign Up/Sign In as an user
@@ -71,29 +55,14 @@ class TestNewCreatedPostPage:
             - Verify the result
 
         """
-        # # Navigate to create Post Page
-        # create_post_page = hello_page.header.navigate_to_create_post_page()
-        # self.log.info("Moved to Create Post Page")
-        #
-        # # Create Post
-        # create_post_page.create_post(title=random_str(15), body=random_str(150))
-        # self.log.info("Post created")
-
-        new_created_post_page.edit_post(title=random_str(15), body=random_str(150))
+        new_post_page.edit_post(title=random_str(15), body=random_str(150))
         self.log.info("Post updated")
 
         # Verify the result
-        new_created_post_page.verify_successfully_edited()
+        new_post_page.verify_successfully_edited()
         self.log.info("Message was verified")
 
-    @pytest.fixture()
-    def create_post(self, hello_page):
-        """Create post and return the page"""
-        create_post_page = hello_page.header.navigate_to_create_post_page()
-        create_post_page.create_post(title=random_str(15), body=random_str(150))
-        return create_post_page.verify_successfully_created()
-
-    def test_trash_post_page(self, new_created_post_page):
+    def test_trash_post_page(self, test_create_post_page):
         """
         - Pre-conditions:
             - Sign Up/Sign In as an user
@@ -103,9 +72,9 @@ class TestNewCreatedPostPage:
             - Verify the result
 
         """
-        new_created_post_page.trash_post()
+        new_post_page.trash_post()
         self.log.info("Post deleted")
 
         # Verify the result
-        new_created_post_page.verify_successfully_trashed()
+        new_post_page.verify_successfully_trashed()
         self.log.info("Message was verified")
