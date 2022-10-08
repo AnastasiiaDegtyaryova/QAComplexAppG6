@@ -17,10 +17,9 @@ class BasePage:
 
     def wait_until_clickable(self, xpath):
         """Wait until element is clickable"""
-        return self.waiter.until(method=expected_conditions.element_to_be_clickable((By.XPATH, xpath)), message=f"XPATH: '{xpath}' is not clickable or cannot "
-                                                                                                                f"be found")
+        return self.waiter.until(method=expected_conditions.element_to_be_clickable((By.XPATH, xpath)),
+                                 message=f"XPATH: '{xpath}' is not clickable or cannot be found")
 
-    # Перевірка наявності елемента в дереві
     def is_exists(self, xpath, by=By.XPATH):
         """Check that element exists"""
         try:
@@ -30,7 +29,7 @@ class BasePage:
             return False
 
     def fill_field(self, xpath, value):
-        """Clear and fill field"""
+        """Find, Clear and fill field"""
         element = self.wait_until_clickable(xpath=xpath)
         element.clear()
         element.send_keys(value)
@@ -41,6 +40,5 @@ class BasePage:
 
     def get_element_text(self, xpath):
         """Find element and get text"""
-        # Verify error
         element = self.wait_until_displayed(xpath=xpath)
         return element.text

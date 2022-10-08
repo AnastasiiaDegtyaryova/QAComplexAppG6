@@ -2,32 +2,40 @@ import logging
 
 import pytest
 
+from pages.utils import random_str
 
-class TestChatPage:
-    log = logging.getLogger("[TestChatPage]")
+
+class TestChat:
+    log = logging.getLogger("[CreatePostPage]")
 
     @pytest.fixture()
     def hello_page(self, start_page, random_user):
         """Sign Up as the user and return the page"""
         return start_page.sign_up_and_verify(random_user)
 
-    def test_create_message(self, hello_page):
+    def test_chat(self, hello_page):
         """
         - Pre-conditions:
             - Sign Up/Sign In as an user
         - Steps:
-            - Click on Chat button
-            - Type message
+            - Open chat
             - Send message
+            - Verify message
+            - Send one more message
+            - Verify messages
         """
-        # Send Message
-        send_message = hello_page.header.open_chat_page()
-        # Type message
-        from pages.utils import random_str
-        sent_random_message = random_str(25)
-        send_message.send_message(sent_random_message)
-        # Verify the result
-        send_message.verify_sent_message(message=sent_random_message)
-        self.log.info("Message:")
-        from time import sleep
-        sleep(10)
+        chat = hello_page.header.open_chat()
+
+        # Send message
+        message_1 = random_str(10)
+        chat.send_message(message_1)
+
+        # Verify message
+        chat.verify_messages([message_1])
+
+        # Send one more message
+        message_2 = random_str(30)
+        chat.send_message(message_2)
+
+        # Verify message
+        chat.verify_messages([message_1, message_2])
