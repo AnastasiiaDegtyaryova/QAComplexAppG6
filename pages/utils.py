@@ -76,6 +76,6 @@ class Post:
         self.private = private
 
     def fill_default(self):
-        """Fill fields using andom data"""
+        """Fill fields using Random data"""
         self.title = random_str(15)
         self.body = random_str(200)
